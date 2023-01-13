@@ -23,7 +23,8 @@ function fetchAnswer(url){
 
 button.addEventListener("click", function() {
     if(input.value.length > 0){
-        fetchAnswer(API_ENDPOINT).then(response => response.json()).then(data => answer.innerHTML = "<br>"+data.answer);
+        fetchAnswer(API_ENDPOINT).then(response => response.json())
+        .then(data => answer.innerHTML = "<br>"+data.answer);
     }
     setTimeout(() => {
         input.value = "";
