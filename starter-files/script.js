@@ -1,5 +1,9 @@
 // API
 const API_ENDPOINT = 'https://yesno.wtf/api';
+let button = document.getElementById("button");
+let answer = document.getElementById("answer"); 
+let input = document.getElementById("input");
+
 
 /**
  * STEPS:
@@ -11,3 +15,20 @@ const API_ENDPOINT = 'https://yesno.wtf/api';
  * 5. Optional: add loading/error states
  *
  */
+
+function fetchAnswer(url){
+    return fetch(url);
+}
+
+
+button.addEventListener("click", function() {
+    if(input.value.length > 0){
+        fetchAnswer(API_ENDPOINT).then(response => response.json()).then(data => answer.innerHTML = "<br>"+data.answer);
+    }
+    setTimeout(() => {
+        input.value = "";
+        answer.innerHTML = "";
+    }, 5000);
+});
+
+
